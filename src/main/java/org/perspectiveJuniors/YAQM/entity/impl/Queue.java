@@ -2,16 +2,15 @@ package org.perspectiveJuniors.YAQM.entity.impl;
 
 import org.perspectiveJuniors.YAQM.entity.IQueue;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.LinkedList;
 
 
 public class Queue implements IQueue {
     private long id;
-    private HashSet<Long> adminSet = new HashSet<>();
-    private LinkedHashMap<Long,Long> orderMap = new LinkedHashMap<>();
+    private Collection<Long> clientSet = new LinkedList<>();
+    private Collection<Long> managerSet = new LinkedList<>();
 
     public Queue(){};
 
@@ -23,38 +22,29 @@ public class Queue implements IQueue {
         return id;
     }
 
-    public void addAdmin(long id){
-        adminSet.add(new Long(id));
+    public void addClient(long clientId){
+        clientSet.add(new Long(clientId));
     }
 
-    public boolean containsAdmin(long adminId){
-        return adminSet.contains(new Long(adminId));
-    }
-
-    public void deleteAdmin(long adminId){
-        Iterator<Long> iterator = adminSet.iterator();
+    public void removeClient(long clientId){
+        Iterator<Long> iterator = clientSet.iterator();
         while (iterator.hasNext()){
             Long element = iterator.next();
-            if(element.longValue()==adminId)
-                adminSet.remove(new Long(adminId));
+            if(element.longValue()==clientId)
+                clientSet.remove(new Long(clientId));
         }
     }
 
-    public void addOrder(long clientId, long managerId){
-        orderMap.put(clientId,managerId);
+    public void addManager(long managerId){
+        managerSet.add(new Long(managerId));
     }
 
-    public boolean containsOrder(long clientId){
-        return orderMap.containsKey(clientId);
-    }
-
-    public void deleteOrder(long clientId){
-        Iterator<Map.Entry<Long,Long>> iterator = orderMap.entrySet().iterator();
+    public void removeManager(long managerId){
+        Iterator<Long> iterator = managerSet.iterator();
         while (iterator.hasNext()){
-            Map.Entry<Long,Long> entry = iterator.next();
-            if(entry.getKey().longValue()==clientId)
-                orderMap.remove(clientId);
+            Long element = iterator.next();
+            if(element.longValue()==managerId)
+                managerSet.remove(new Long(managerId));
         }
     }
-
 }

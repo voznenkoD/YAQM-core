@@ -7,11 +7,11 @@ import org.perspectiveJuniors.YAQM.entity.impl.PersonalData;
  */
 public abstract class AbstractUser {
     private long id;
-    private PersonalData personalData;
+    private AbstractPersonalData personalData;
 
     public AbstractUser(){};
 
-    public AbstractUser(long id, PersonalData personalData) {
+    public AbstractUser(long id, AbstractPersonalData personalData) {
         this.id = id;
         this.personalData = personalData;
     }
@@ -21,7 +21,7 @@ public abstract class AbstractUser {
     }
 
 
-    public PersonalData getPersonalData() {
+    public AbstractPersonalData getPersonalData() {
         return personalData;
     }
 

@@ -1,5 +1,6 @@
 package org.perspectiveJuniors.YAQM.entity.impl;
 
+import org.perspectiveJuniors.YAQM.entity.AbstractPersonalData;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 
 import java.util.HashSet;
@@ -12,7 +13,7 @@ public class Manager extends AbstractUser{
     public Manager() {
     }
 
-    public Manager(long id, PersonalData personalData) {
+    public Manager(long id, AbstractPersonalData personalData) {
         super(id, personalData);
     }
 }
