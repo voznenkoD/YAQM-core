@@ -2,36 +2,39 @@ package org.perspectiveJuniors.YAQM.entity.impl;
 
 import org.perspectiveJuniors.YAQM.entity.IQueue;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 
 public class Queue implements IQueue {
     private long id;
-    private Collection<Long> clientSet = new LinkedList<>();
-    private Collection<Long> managerSet = new LinkedList<>();
+    private String name;
+    private List<Long> clientList = new LinkedList<>();
+    private Set<Long> managerSet = new HashSet<>();
 
     public Queue(){};
 
-    public Queue(long id) {
+    public Queue(long id, String name) {
+
         this.id = id;
+        this.name=name;
     }
 
     public long getId() {
         return id;
     }
 
+    public String getName() { return name; }
+
     public void addClient(long clientId){
-        clientSet.add(new Long(clientId));
+        clientList.add(new Long(clientId));
     }
 
     public void removeClient(long clientId){
-        Iterator<Long> iterator = clientSet.iterator();
+        Iterator<Long> iterator = clientList.iterator();
         while (iterator.hasNext()){
             Long element = iterator.next();
             if(element.longValue()==clientId)
-                clientSet.remove(new Long(clientId));
+                clientList.remove(new Long(clientId));
         }
     }
 
