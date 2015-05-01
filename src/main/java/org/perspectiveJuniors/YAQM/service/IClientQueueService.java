@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
+import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;
 
 /**
  * Created by Всеволод on 11.04.2015.
  * by eljetto
  */
-public interface IQueueService {
+public interface IClientQueueService {
 
-    public void addUserToQueue(long userId, long queueId) throws NotRegisteredUserException;
+    public void addUserToQueue(long userId, long queueId)
+            throws NotRegisteredUserException, ClientAlreadyInQueueException;
 
     public long createNewQueue();
 

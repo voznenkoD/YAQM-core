@@ -1,14 +1,18 @@
 package org.perspectiveJuniors.YAQM.entity.impl;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.perspectiveJuniors.YAQM.entity.AbstractPersonalData;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
-
-import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * Created by Всеволод on 11.04.2015.
  */
+@Entity
+@Table(name="MANAGER")
+@DiscriminatorValue("MANAGER")
 public class Manager extends AbstractUser{
     public Manager() {
     }

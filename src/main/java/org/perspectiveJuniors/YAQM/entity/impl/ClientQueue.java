@@ -2,6 +2,9 @@ package org.perspectiveJuniors.YAQM.entity.impl;
 
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.IQueue;
+import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
+import org.perspectiveJuniors.YAQM.exception.ClientIsNotInQueueException;
+import org.perspectiveJuniors.YAQM.exception.ManagerIsNotOperatingQueueException;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,23 +26,28 @@ public class ClientQueue implements IQueue {
         return id;
     }
 
-    public void addClient(long clientId){
-        if(!clientList.contains(clientId))clientList.add(clientId);
-        //TODO add throwing ClientAlreadyInQueueException
+    public void addClient(long clientId) throws ClientAlreadyInQueueException {
+        if(!clientList.contains(clientId)) {
+            clientList.add(clientId);
+        } else {
+            throw new ClientAlreadyInQueueException();
+        }
     }
 
-    public void removeClient(long clientId){
-        clientList.remove(clientId);
-        //TODO add throwing ClientIsNotInTheQueueException
+    public void removeClient(long clientId) throws ClientIsNotInQueueException {
+        boolean wasRemoved = clientList.remove(clientId);
+        if(!wasRemoved)throw new ClientIsNotInQueueException();
     }
 
     public void addManager(long managerId){
         managerSet.add(managerId);
     }
 
-    public void removeManager(long managerId){
-        managerSet.remove(managerId);
-        //TODO add throwing ManagerInNotOperatingQueueException
+    public void removeManager(long managerId) throws ManagerIsNotOperatingQueueException {
+        boolean wasRemoved = managerSet.remove(managerId);
+        if(!wasRemoved){
+            throw new ManagerIsNotOperatingQueueException();
+        }
     }
 
     public long getNextClientId() {

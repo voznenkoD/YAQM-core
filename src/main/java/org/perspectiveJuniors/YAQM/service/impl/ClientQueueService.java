@@ -4,19 +4,22 @@ import java.util.List;
 
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
+import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;
-import org.perspectiveJuniors.YAQM.service.IQueueService;
+import org.perspectiveJuniors.YAQM.service.IClientQueueService;
 
 /**
  * Created by Всеволод on 11.04.2015.
+ * eljetto
  */
-public class QueueServiceImpl implements IQueueService {
+public class ClientQueueService implements IClientQueueService {
 
     private QueueDao queueDao = new QueueDao();
     private UserDao userDao = new UserDao();
 
     @Override
-    public void addUserToQueue(long userId, long queueId) throws NotRegisteredUserException {
+    public void addUserToQueue(long userId, long queueId)
+            throws NotRegisteredUserException, ClientAlreadyInQueueException {
         if(userDao.read(userId) != null) {
             ClientQueue clientQueue = queueDao.read(queueId);
             clientQueue.addClient(userId);
@@ -34,7 +37,7 @@ public class QueueServiceImpl implements IQueueService {
     @Override
     public AbstractUser pickUpNextUserFromQueue(long queueId) {
         ClientQueue clientQueue = queueDao.read();
-        return userDao.read(clientQueue.getNextClient());
+        return userDao.read(clientQueue.getNextClientId());
     }
 
     @Override
