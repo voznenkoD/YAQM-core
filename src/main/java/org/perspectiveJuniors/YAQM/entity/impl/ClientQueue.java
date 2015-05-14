@@ -1,6 +1,5 @@
 package org.perspectiveJuniors.YAQM.entity.impl;
 
-import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.IQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ClientIsNotInQueueException;
