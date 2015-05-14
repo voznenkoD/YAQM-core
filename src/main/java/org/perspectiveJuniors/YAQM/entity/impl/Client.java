@@ -12,7 +12,6 @@ import org.perspectiveJuniors.YAQM.entity.AbstractUser;
  */
 
 @Entity
-@Table(name="CLIENT")
 @DiscriminatorValue("CLIENT")
 public class Client extends AbstractUser {
     public Client() {

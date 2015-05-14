@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class DaoUserDaoUser extends GenericDao<AbstractUser> implements IDaoUser {
+public class DaoUser extends GenericDao<AbstractUser> implements IDaoUser {
 
 
 }

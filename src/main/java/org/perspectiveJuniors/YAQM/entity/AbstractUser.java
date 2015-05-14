@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name="USER")
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
-        name="VEHICLE_TYPE",
+        name="USER_TYPE",
         discriminatorType= DiscriminatorType.STRING
 )
 

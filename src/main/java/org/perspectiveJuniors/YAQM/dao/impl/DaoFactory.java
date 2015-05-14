@@ -15,7 +15,7 @@ public class DaoFactory implements IDaoFactory{
 
     @Override
     public IDaoUser getDaoUser() {
-        return new DaoUserDaoUser();
+        return new DaoUser();
     }
 
     @Override

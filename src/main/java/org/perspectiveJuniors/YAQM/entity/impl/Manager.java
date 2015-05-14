@@ -11,7 +11,6 @@ import org.perspectiveJuniors.YAQM.entity.AbstractUser;
  * Created by Всеволод on 11.04.2015.
  */
 @Entity
-@Table(name="MANAGER")
 @DiscriminatorValue("MANAGER")
 public class Manager extends AbstractUser{
     public Manager() {
