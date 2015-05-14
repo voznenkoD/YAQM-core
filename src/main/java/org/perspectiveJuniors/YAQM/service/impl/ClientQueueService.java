@@ -2,6 +2,10 @@ package org.perspectiveJuniors.YAQM.service.impl;
 
 import java.util.List;
 
+import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
+import org.perspectiveJuniors.YAQM.dao.IDaoUser;
+import org.perspectiveJuniors.YAQM.dao.impl.DaoClientQueue;
+import org.perspectiveJuniors.YAQM.dao.impl.DaoUserDaoUser;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
@@ -14,8 +18,8 @@ import org.perspectiveJuniors.YAQM.service.IClientQueueService;
  */
 public class ClientQueueService implements IClientQueueService {
 
-    private QueueDao queueDao = new QueueDao();
-    private UserDao userDao = new UserDao();
+    private IDaoClientQueue queueDao = new DaoClientQueue();
+    private IDaoUser userDao = new DaoUserDaoUser();
 
     @Override
     public void addUserToQueue(long userId, long queueId)

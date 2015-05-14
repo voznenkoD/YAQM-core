@@ -3,7 +3,7 @@ package org.perspectiveJuniors.YAQM.dao;
 /**
  * Created by eljetto on 4/22/15.
  */
-public interface GenericDao<T> {
+public interface IGenericDao<T> {
 
     T create(T t);
 
