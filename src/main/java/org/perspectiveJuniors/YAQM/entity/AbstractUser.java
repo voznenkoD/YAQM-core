@@ -1,15 +1,6 @@
 package org.perspectiveJuniors.YAQM.entity;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Всеволод on 11.04.2015.
@@ -29,6 +20,7 @@ public abstract class AbstractUser {
     @Column(name="USER_ID")
     private long id;
     @Column(name="PERSONAL_DATA")
+    @OneToOne(mappedBy="absUser", cascade=CascadeType.ALL)
     private AbstractPersonalData personalData;
 
     public AbstractUser(){};
