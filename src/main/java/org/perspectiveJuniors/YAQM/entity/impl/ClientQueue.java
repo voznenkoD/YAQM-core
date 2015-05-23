@@ -11,10 +11,6 @@ import java.util.*;
 @Entity
 @DiscriminatorValue("CLIENT_QUEUE")
 public class ClientQueue extends AbstractQueue {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="QUEUE_ID")
-    private long id;
     @ElementCollection
     @CollectionTable(name = "CLIENTS", joinColumns = @JoinColumn(name = "QUEUE_ID"))
     @Column(name="CLIENT_LIST")
