@@ -9,16 +9,19 @@ import org.perspectiveJuniors.YAQM.dao.impl.DaoFactory;
 import org.perspectiveJuniors.YAQM.dao.impl.DaoUser;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.IQueue;
+import org.perspectiveJuniors.YAQM.entity.impl.Client;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;
 import org.perspectiveJuniors.YAQM.service.IClientQueueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by Всеволод on 11.04.2015.
  * eljetto
  */
+@Service
 public class ClientQueueService implements IClientQueueService {
 
     @Autowired
@@ -41,7 +44,11 @@ public class ClientQueueService implements IClientQueueService {
 
     @Override
     public long createNewQueue() {
-        return queueDao.create();
+        return queueDao.create(new ClientQueue()).getId();
+    }
+
+    public long createNewUser(AbstractUser user) {
+        return userDao.create(user).getId();
     }
 
     @Override

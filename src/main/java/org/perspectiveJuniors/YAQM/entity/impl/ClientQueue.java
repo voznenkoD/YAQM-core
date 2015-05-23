@@ -18,7 +18,7 @@ public class ClientQueue implements IQueue {
     @ElementCollection
     @CollectionTable(name = "CLIENTS", joinColumns = @JoinColumn(name = "QUEUE_ID"))
     @Column(name="CLIENT_LIST")
-    private Queue<Long> clientList = new LinkedList<>();
+    private Collection<Long> clientList = new LinkedList<>();
     @ElementCollection
     @CollectionTable(name = "MANAGERS", joinColumns = @JoinColumn(name = "QUEUE_ID"))
     @Column(name="MANAGER_SET")
@@ -59,7 +59,7 @@ public class ClientQueue implements IQueue {
     }
 
     public long getNextClientId() {
-        return clientList.poll();
+        return 0l;
     }
 
 }

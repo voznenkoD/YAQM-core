@@ -13,4 +13,5 @@ import javax.persistence.*;
         discriminatorType= DiscriminatorType.STRING
 )
 public interface IQueue {
+    public long getId();
 }

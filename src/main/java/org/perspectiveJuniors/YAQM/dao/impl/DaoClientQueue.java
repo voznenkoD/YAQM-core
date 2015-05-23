@@ -5,7 +5,6 @@ import org.perspectiveJuniors.YAQM.entity.IQueue;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,11 +13,11 @@ import java.util.List;
 public class DaoClientQueue extends GenericDao<IQueue> implements IDaoClientQueue {
 
     public List<ClientQueue> getAllQueuesForManager(long managerId){
-        String stringQuery="SELECT * FROM TABLE CLIENT_QUEUE WHERE ";
-        Query query = this.em.createNativeQuery(stringQuery);
+        Query query = this.em.createQuery("select c from ClientQueue as clientQueue left join clientQueue.managerSet");
 
+        return null;
     }
     public List<ClientQueue> getAllQueuesForUser(long userId){
-
+        return null;
     }
 }

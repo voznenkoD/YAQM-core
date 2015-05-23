@@ -31,7 +31,6 @@ public abstract class AbstractUser {
     @Column(name="USER_ID")
     protected long id;
     @Column(name="PERSONAL_DATA")
-    @OneToOne(mappedBy="absUser", cascade= CascadeType.ALL)
     protected AbstractPersonalData personalData;
 
     public AbstractUser(){};
