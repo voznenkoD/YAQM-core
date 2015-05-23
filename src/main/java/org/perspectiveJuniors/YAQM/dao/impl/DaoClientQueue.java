@@ -3,6 +3,7 @@ package org.perspectiveJuniors.YAQM.dao.impl;
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
 import org.perspectiveJuniors.YAQM.entity.AbstractQueue;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import java.util.List;

@@ -2,6 +2,8 @@ package org.perspectiveJuniors.YAQM.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientMaintController {
 
-    @Autowired
+    @Resource(name="clientQueueService")
     ClientQueueService clientQueueService;
     @RequestMapping(value = "/client", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody

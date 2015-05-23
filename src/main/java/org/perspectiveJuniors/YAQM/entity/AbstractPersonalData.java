@@ -2,6 +2,7 @@ package org.perspectiveJuniors.YAQM.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public abstract class AbstractPersonalData {
     private String surname;
     @Column(name="LOGIN")
     private String login;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private AbstractUser absUser;
 

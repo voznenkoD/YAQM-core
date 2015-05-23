@@ -26,6 +26,9 @@ public class ClientQueueService implements IClientQueueService {
     private IDaoClientQueue queueDao = daoFactory.getDaoClientQueue();
     private IDaoUser userDao = daoFactory.getDaoUser();
 
+    public ClientQueueService() {
+    }
+
     @Override
     public void addUserToQueue(long userId, long queueId)
             throws NotRegisteredUserException, ClientAlreadyInQueueException {

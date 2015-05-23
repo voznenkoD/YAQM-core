@@ -5,11 +5,13 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,7 +32,8 @@ public abstract class AbstractUser {
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="USER_ID")
     protected long id;
-    @Column(name="PERSONAL_DATA")
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "absUser", cascade = CascadeType.ALL)
     protected AbstractPersonalData personalData;
 
     public AbstractUser(){};

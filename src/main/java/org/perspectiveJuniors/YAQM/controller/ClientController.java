@@ -1,5 +1,7 @@
 package org.perspectiveJuniors.YAQM.controller;
 
+import javax.annotation.Resource;
+
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.Client;
 import org.perspectiveJuniors.YAQM.service.impl.ClientQueueService;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ClientController {
-    @Autowired
+    @Resource(name="clientQueueService")
     ClientQueueService clientQueueService;
 
     @RequestMapping(value = "/testClient" ,method = RequestMethod.POST, consumes = "application/json")
