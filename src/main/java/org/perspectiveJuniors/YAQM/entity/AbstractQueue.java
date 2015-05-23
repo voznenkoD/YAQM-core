@@ -12,6 +12,11 @@ import javax.persistence.*;
         name="QUEUE_TYPE",
         discriminatorType= DiscriminatorType.STRING
 )
-public interface IQueue {
-    public long getId();
+public abstract class AbstractQueue {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="QUEUE_ID")
+    protected long id;
+
+    public abstract long getId();
 }

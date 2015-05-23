@@ -4,12 +4,8 @@ import java.util.List;
 
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
 import org.perspectiveJuniors.YAQM.dao.IDaoUser;
-import org.perspectiveJuniors.YAQM.dao.impl.DaoClientQueue;
 import org.perspectiveJuniors.YAQM.dao.impl.DaoFactory;
-import org.perspectiveJuniors.YAQM.dao.impl.DaoUser;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
-import org.perspectiveJuniors.YAQM.entity.IQueue;
-import org.perspectiveJuniors.YAQM.entity.impl.Client;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;

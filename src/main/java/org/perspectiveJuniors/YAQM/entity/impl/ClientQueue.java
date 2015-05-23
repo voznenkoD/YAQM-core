@@ -1,6 +1,6 @@
 package org.perspectiveJuniors.YAQM.entity.impl;
 
-import org.perspectiveJuniors.YAQM.entity.IQueue;
+import org.perspectiveJuniors.YAQM.entity.AbstractQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ClientIsNotInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ManagerIsNotOperatingQueueException;
@@ -10,7 +10,7 @@ import java.util.*;
 
 @Entity
 @DiscriminatorValue("CLIENT_QUEUE")
-public class ClientQueue implements IQueue {
+public class ClientQueue extends AbstractQueue {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="QUEUE_ID")

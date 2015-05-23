@@ -2,6 +2,9 @@ package org.perspectiveJuniors.YAQM.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -12,6 +15,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PERSONAL_DATA")
 public abstract class AbstractPersonalData {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="USER_ID")
+    protected long id;
     @Column(name="NAME")
     private String name;
     @Column(name="SURNAME")
