@@ -5,14 +5,23 @@ import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ClientIsNotInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ManagerIsNotOperatingQueueException;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import javax.persistence.*;
+import java.util.*;
 
+@Entity
+@DiscriminatorValue("CLIENT_QUEUE")
 public class ClientQueue implements IQueue {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="QUEUE_ID")
     private long id;
+    @ElementCollection
+    @CollectionTable(name = "CLIENTS", joinColumns = @JoinColumn(name = "QUEUE_ID"))
+    @Column(name="CLIENT_LIST")
     private Queue<Long> clientList = new LinkedList<>();
+    @ElementCollection
+    @CollectionTable(name = "MANAGERS", joinColumns = @JoinColumn(name = "QUEUE_ID"))
+    @Column(name="MANAGER_SET")
     private Collection<Long> managerSet = new HashSet<>();
 
     public ClientQueue(){};
@@ -52,4 +61,5 @@ public class ClientQueue implements IQueue {
     public long getNextClientId() {
         return clientList.poll();
     }
+
 }

@@ -2,6 +2,7 @@ package org.perspectiveJuniors.YAQM.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,4 +45,5 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     public T update(final T t) {
         return this.em.merge(t);
     }
+
 }
