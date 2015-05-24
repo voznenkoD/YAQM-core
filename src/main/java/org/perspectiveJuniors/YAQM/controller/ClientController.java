@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.Client;
+import org.perspectiveJuniors.YAQM.service.IClientQueueService;
 import org.perspectiveJuniors.YAQM.service.impl.ClientQueueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClientController {
     @Resource(name="clientQueueService")
-    ClientQueueService clientQueueService;
+    IClientQueueService clientQueueService;
 
     @RequestMapping(value = "/testClient" ,method = RequestMethod.POST, consumes = "application/json")
     public void registerUser(AbstractUser user){

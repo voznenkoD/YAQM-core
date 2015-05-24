@@ -23,4 +23,6 @@ public interface IClientQueueService {
     public List<ClientQueue> getQueuesOperatedByUser(long managerId);
 
     public List<ClientQueue> getQueuesThatUserIsIn(long userId);
+
+    long createNewUser(AbstractUser user);
 }

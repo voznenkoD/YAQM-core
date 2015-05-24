@@ -3,6 +3,7 @@ package org.perspectiveJuniors.YAQM.service.impl;
 import java.util.List;
 
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
+import org.perspectiveJuniors.YAQM.dao.IDaoFactory;
 import org.perspectiveJuniors.YAQM.dao.IDaoUser;
 import org.perspectiveJuniors.YAQM.dao.impl.DaoFactory;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
@@ -21,10 +22,10 @@ import org.springframework.stereotype.Service;
 public class ClientQueueService implements IClientQueueService {
 
     @Autowired
-    private DaoFactory daoFactory;
+    private IDaoFactory daoFactory;
 
-    private IDaoClientQueue queueDao = daoFactory.getDaoClientQueue();
-    private IDaoUser userDao = daoFactory.getDaoUser();
+    public IDaoClientQueue queueDao = daoFactory.getDaoClientQueue();
+    public IDaoUser userDao = daoFactory.getDaoUser();
 
     public ClientQueueService() {
     }

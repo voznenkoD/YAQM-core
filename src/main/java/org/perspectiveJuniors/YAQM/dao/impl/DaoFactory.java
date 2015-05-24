@@ -17,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Qualifier("daoFactory")
 public class DaoFactory implements IDaoFactory{
 
-    private Session currentSession;
+    public DaoFactory() {
+    }
 
     @Override
     public IDaoUser getDaoUser() {
