@@ -52,4 +52,11 @@ public abstract class AbstractUser {
         return personalData;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setPersonalData(AbstractPersonalData personalData) {
+        this.personalData = personalData;
+    }
 }
