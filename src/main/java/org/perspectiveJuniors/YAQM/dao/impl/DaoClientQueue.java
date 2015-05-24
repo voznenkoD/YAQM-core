@@ -3,7 +3,9 @@ package org.perspectiveJuniors.YAQM.dao.impl;
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
 import org.perspectiveJuniors.YAQM.entity.AbstractQueue;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -11,6 +13,10 @@ import java.util.List;
 /**
  * Created by eljetto on 4/21/15.
  */
+
+@Repository
+@Transactional
+@Qualifier("daoClientQueue")
 public class DaoClientQueue extends GenericDao<AbstractQueue> implements IDaoClientQueue {
 
     public List<ClientQueue> getAllQueuesForManager(long managerId){
