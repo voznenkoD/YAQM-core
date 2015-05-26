@@ -16,7 +16,7 @@ import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 public class Client extends AbstractUser {
     public Client() {
     }
-    public Client(long id, AbstractPersonalData personalData) {
+    public Client(long id, PersonalData personalData) {
         super(id, personalData);
     }
 }
