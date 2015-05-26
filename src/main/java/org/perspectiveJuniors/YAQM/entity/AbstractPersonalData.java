@@ -16,16 +16,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PERSONAL_DATA")
 public abstract class AbstractPersonalData {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="USER_ID")
     protected long id;
+
     @Column(name="NAME")
     private String name;
+
     @Column(name="SURNAME")
     private String surname;
+
     @Column(name="LOGIN")
     private String login;
+
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private AbstractUser absUser;

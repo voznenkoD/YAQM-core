@@ -11,4 +11,11 @@ import javax.persistence.*;
 
 public class PersonalData extends AbstractPersonalData{
 
+
+    public PersonalData(){super();}
+
+    public PersonalData(String name, String surname, String login) {
+        super(name,surname,login);
+    }
+
 }

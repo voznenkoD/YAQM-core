@@ -17,7 +17,7 @@ public class Client extends AbstractUser {
     public Client() {
         super();
     }
-    public Client(long id, AbstractPersonalData personalData) {
+    public Client(long id, PersonalData personalData) {
         super(id, personalData);
     }
 
@@ -26,9 +26,8 @@ public class Client extends AbstractUser {
         super.setId(id);
     }
 
-    public void setPersonalData(AbstractPersonalData personalData) {
+    public void setPersonalData(PersonalData personalData) {
         super.setPersonalData(personalData);
     }
-
 
 }
