@@ -50,4 +50,15 @@ public abstract class AbstractPersonalData {
         return login;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
 }
