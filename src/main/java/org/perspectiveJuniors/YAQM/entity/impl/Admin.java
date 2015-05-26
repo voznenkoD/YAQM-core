@@ -14,7 +14,7 @@ import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 @DiscriminatorValue("ADMIN")
 public class Admin extends AbstractUser {
     public Admin() {}
-    public Admin(long id, AbstractPersonalData personalData) {
+    public Admin(long id, PersonalData personalData) {
         super(id, personalData);
     }
 }

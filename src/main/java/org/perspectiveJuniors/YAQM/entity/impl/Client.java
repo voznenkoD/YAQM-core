@@ -15,8 +15,20 @@ import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 @DiscriminatorValue("CLIENT")
 public class Client extends AbstractUser {
     public Client() {
+        super();
     }
-    public Client(long id, PersonalData personalData) {
+    public Client(long id, AbstractPersonalData personalData) {
         super(id, personalData);
     }
+
+
+    public void setId(long id) {
+        super.setId(id);
+    }
+
+    public void setPersonalData(AbstractPersonalData personalData) {
+        super.setPersonalData(personalData);
+    }
+
+
 }
