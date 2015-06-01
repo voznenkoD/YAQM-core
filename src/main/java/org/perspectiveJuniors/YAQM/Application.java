@@ -25,45 +25,7 @@ import javax.persistence.EntityManager;
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
-    private static void bashCommand(String ...vararg) throws IOException,InterruptedException{
-                // указываем в конструкторе ProcessBuilder,
-                // что нужно запустить программу с параметрами
-                ProcessBuilder procBuilder = new ProcessBuilder(vararg);
-                // перенаправляем стандартный поток ошибок на
-                // стандартный вывод
-                procBuilder.redirectErrorStream(true);
-                // запуск программы
-                Process process = procBuilder.start();
-                // читаем стандартный поток вывода
-                // и выводим на экран
-                InputStream stdout = process.getInputStream();
-                InputStreamReader isrStdout = new InputStreamReader(stdout);
-                BufferedReader brStdout = new BufferedReader(isrStdout);
-
-                String line = null;
-                while((line = brStdout.readLine()) != null) {
-                    System.out.println(line);
-                }
-                // ждем пока завершится вызванная программа
-                // и сохраняем код, с которым она завершилась в
-                // в переменную exitVal
-                int exitVal = process.waitFor();
-
-    }
     public static void main(String[] args) {
-        String login="yaqm";
-        String password="yaqm";
-        String db="yaqm";
-        String query="";
-        query+="CREATE DATABASE "+db+"; ";
-        query+="CREATE USER "+login+"; ";
-        query+="grant all on "+db+".* to '"+login+"' identified by '"+password+"'; ";
-        try{
-            bashCommand("mysql", "-u","root","-proot","-e",query);
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
         ApplicationContext ctx  = SpringApplication.run(Application.class, args);
         //some code to see list of beans init
 //        String[] beanNames = ctx.getBeanDefinitionNames();
