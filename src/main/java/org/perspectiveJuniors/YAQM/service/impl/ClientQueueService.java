@@ -2,6 +2,8 @@ package org.perspectiveJuniors.YAQM.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
 import org.perspectiveJuniors.YAQM.dao.IDaoUser;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
  * eljetto
  */
 @Service
+@Transactional
 public class ClientQueueService implements IClientQueueService {
 
     @Autowired
