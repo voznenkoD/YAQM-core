@@ -24,5 +24,4 @@ public interface IClientQueueService {
 
     public List<ClientQueue> getQueuesThatUserIsIn(long userId);
 
-    long createNewUser(AbstractUser user);
 }

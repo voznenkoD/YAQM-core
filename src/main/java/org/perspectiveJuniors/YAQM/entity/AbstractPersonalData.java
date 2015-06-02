@@ -24,6 +24,9 @@ public abstract class AbstractPersonalData {
     @Column(name="LOGIN")
     private String login;
 
+    @Column(name="PASSWORD")
+    private String password;
+
     @OneToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn
     private AbstractUser absUser;
@@ -34,6 +37,13 @@ public abstract class AbstractPersonalData {
         this.name = name;
         this.surname = surname;
         this.login = login;
+    }
+
+    public AbstractPersonalData(String name, String surname, String login, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
     }
 
     public String getName() {
@@ -58,6 +68,14 @@ public abstract class AbstractPersonalData {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

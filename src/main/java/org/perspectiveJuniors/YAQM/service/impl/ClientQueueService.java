@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * Created by Всеволод on 11.04.2015.
  * eljetto
  */
-@Service
+@Service("clientQueueService")
 public class ClientQueueService implements IClientQueueService {
 
     @Autowired
@@ -44,9 +44,6 @@ public class ClientQueueService implements IClientQueueService {
         return queueDao.create(new ClientQueue()).getId();
     }
 
-    public long createNewUser(AbstractUser user) {
-        return userDao.create(user).getId();
-    }
 
     @Override
     public AbstractUser pickUpNextUserFromQueue(long queueId) {

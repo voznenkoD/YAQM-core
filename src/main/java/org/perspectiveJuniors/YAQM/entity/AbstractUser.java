@@ -7,13 +7,17 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Всеволод on 11.04.2015.
@@ -29,18 +33,28 @@ import javax.persistence.Table;
 
 public abstract class AbstractUser {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name="USER_ID")
     protected long id;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "absUser", cascade = CascadeType.ALL)
     protected AbstractPersonalData personalData;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+
     public AbstractUser(){};
 
     public AbstractUser(long id, AbstractPersonalData personalData) {
         this.id = id;
         this.personalData = personalData;
+    }
+
+    public AbstractUser(long id, AbstractPersonalData personalData,
+            Set<UserRole> userRole) {
+        this.id = id;
+        this.personalData = personalData;
+        this.userRole = userRole;
     }
 
     public long getId() {
@@ -58,6 +72,14 @@ public abstract class AbstractUser {
 
     public void setPersonalData(AbstractPersonalData personalData) {
         this.personalData = personalData;
+    }
+
+    public Set<UserRole> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
     }
 
     @Override
