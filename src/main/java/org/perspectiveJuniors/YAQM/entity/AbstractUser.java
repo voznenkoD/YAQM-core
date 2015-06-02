@@ -59,4 +59,24 @@ public abstract class AbstractUser {
     public void setPersonalData(AbstractPersonalData personalData) {
         this.personalData = personalData;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractUser)) return false;
+
+        AbstractUser that = (AbstractUser) o;
+
+        if (id != that.id) return false;
+        if (!(personalData != null ? !personalData.equals(that.personalData) : that.personalData != null)) return true;
+        else return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (personalData != null ? personalData.hashCode() : 0);
+        return result;
+    }
 }

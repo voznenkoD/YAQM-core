@@ -9,8 +9,8 @@ import javax.persistence.*;
  * Created by Всеволод on 11.04.2015.
  */
 
+@Entity
 public class PersonalData extends AbstractPersonalData{
-
 
     public PersonalData(){super();}
 

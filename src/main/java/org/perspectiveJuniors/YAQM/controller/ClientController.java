@@ -24,8 +24,8 @@ public class ClientController {
     IClientQueueService clientQueueService;
 
     @RequestMapping(value = "/testClient" ,method = RequestMethod.POST, consumes = "application/json")
-    public void registerUser(@RequestBody Client client){
-        clientQueueService.createNewUser(client);
+    public long registerUser(@RequestBody Client client){
+        return clientQueueService.createNewUser(client);
     }
 
     @RequestMapping(value = "/testClient" ,method = RequestMethod.GET, produces = "application/json")

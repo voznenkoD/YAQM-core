@@ -1,10 +1,10 @@
 package org.perspectiveJuniors.YAQM.dao;
 
-import java.util.List;
-
+import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by eljetto on 4/22/15.
  */
+@Transactional
 public interface IGenericDao<T> {
 
     T create(T t);

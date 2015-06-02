@@ -1,20 +1,13 @@
 package org.perspectiveJuniors.YAQM.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Всеволод on 11.04.2015.
  */
 @Entity
 @Table(name="PERSONAL_DATA")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public abstract class AbstractPersonalData {
 
     @Id
@@ -65,5 +58,29 @@ public abstract class AbstractPersonalData {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractPersonalData)) return false;
+
+        AbstractPersonalData that = (AbstractPersonalData) o;
+
+        if (id != that.id) return false;
+        if (login != null ? !login.equals(that.login) : that.login != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (surname != null ? !surname.equals(that.surname) : that.surname != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        return result;
     }
 }
