@@ -1,5 +1,6 @@
 package org.perspectiveJuniors.YAQM.dao.impl;
 
+
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
 import org.perspectiveJuniors.YAQM.entity.AbstractQueue;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
@@ -20,11 +21,15 @@ import java.util.List;
 public class DaoClientQueue extends GenericDao<AbstractQueue> implements IDaoClientQueue {
 
     public List<ClientQueue> getAllQueuesForManager(long managerId){
-        Query query = this.em.createQuery("select c from ClientQueue as clientQueue left join clientQueue.managerSet");
-
-        return null;
+        String stringQuery="SELECT cq FROM ClientQueue cq, IN (cq.managerSet) unit WHERE unit = :managerId";
+        Query query = this.em.createQuery(stringQuery).setParameter("managerId",managerId);
+        List<ClientQueue> list = query.getResultList();
+        return list;
     }
     public List<ClientQueue> getAllQueuesForUser(long userId){
-        return null;
+        String stringQuery="SELECT cq FROM ClientQueue cq, IN (cq.clientList) unit WHERE unit = :userId";
+        Query query = this.em.createQuery(stringQuery).setParameter("userId",userId);
+        List<ClientQueue> list = query.getResultList();
+        return list;
     }
 }

@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class ClientDaoTestIT {
+public class DaoClientTestIT {
     @Autowired
     private IDaoUser userDao;
 

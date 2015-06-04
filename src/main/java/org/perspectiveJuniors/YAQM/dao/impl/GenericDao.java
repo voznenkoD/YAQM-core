@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 
 import org.perspectiveJuniors.YAQM.dao.IGenericDao;
 
@@ -14,7 +15,8 @@ import org.perspectiveJuniors.YAQM.dao.IGenericDao;
  */
 public abstract class GenericDao<T> implements IGenericDao<T> {
 
-    @PersistenceContext
+    @PersistenceContext(type= PersistenceContextType.EXTENDED)
+    //@PersistenceContext
     protected EntityManager em;
 
     private Class<T> type;
