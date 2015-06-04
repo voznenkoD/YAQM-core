@@ -26,8 +26,8 @@ public class ClientController {
     @Qualifier("clientService")
     ClientService clientService;
 
-    @RequestMapping(value = "/dummyCreate", method = RequestMethod.POST, consumes = "application/json")
-    public long registerUser(@RequestBody Client client){
+    @RequestMapping(value = "/dummy", method = RequestMethod.POST, consumes = "application/json")
+    public long registerUser(Client client){
         return clientService.createNewUser(client);
     }
 
