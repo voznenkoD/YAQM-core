@@ -18,4 +18,8 @@ public class PersonalData extends AbstractPersonalData{
         super(name,surname,login);
     }
 
+    public PersonalData(String name, String surname, String login, String pass) {
+        super(name, surname, login, pass);
+    }
+
 }
