@@ -16,7 +16,14 @@ public class Manager extends AbstractUser{
     public Manager() {
     }
 
-    public Manager(long id, AbstractPersonalData personalData) {
+    public Manager(long id, PersonalData personalData) {
         super(id, personalData);
+    }
+    public void setId(long id) {
+        super.setId(id);
+    }
+
+    public void setPersonalData(PersonalData personalData) {
+        super.setPersonalData(personalData);
     }
 }

@@ -17,4 +17,11 @@ public class Admin extends AbstractUser {
     public Admin(long id, PersonalData personalData) {
         super(id, personalData);
     }
+    public void setId(long id) {
+        super.setId(id);
+    }
+
+    public void setPersonalData(PersonalData personalData) {
+        super.setPersonalData(personalData);
+    }
 }
