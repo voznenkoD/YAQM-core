@@ -8,6 +8,13 @@ import org.perspectiveJuniors.YAQM.entity.impl.Client;
 import org.perspectiveJuniors.YAQM.entity.impl.PersonalData;
 import org.perspectiveJuniors.YAQM.service.IClientQueueService;
 import org.perspectiveJuniors.YAQM.service.impl.ClientQueueService;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.perspectiveJuniors.YAQM.entity.AbstractPersonalData;
+import org.perspectiveJuniors.YAQM.entity.AbstractUser;
+import org.perspectiveJuniors.YAQM.entity.impl.Client;
+import org.perspectiveJuniors.YAQM.entity.impl.PersonalData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +30,18 @@ public class ClientController {
     @Resource(name="clientQueueService")
     IClientQueueService clientQueueService;
 
-    @RequestMapping(value = "/testClient" ,method = RequestMethod.POST, consumes = "application/json")
+
+    @RequestMapping(value = "/dummyCreate", method = RequestMethod.POST, consumes = "application/json")
     public long registerUser(@RequestBody Client client){
         return clientQueueService.createNewUser(client);
     }
 
-    @RequestMapping(value = "/testClient" ,method = RequestMethod.GET, produces = "application/json")
-    public @ResponseBody Client returnDummyClient(){
-        PersonalData personalData = new PersonalData();
-        return  new Client(0, personalData);
+
+    @RequestMapping(value = "/dummy", method = RequestMethod.GET, produces = "application/json")
+    public AbstractUser dummyClient(){
+        AbstractPersonalData personalData = new PersonalData("John", "McLane", "Johny");
+        AbstractUser client = new Client();
+        client.setPersonalData(personalData);
+        return client;
     }
 }

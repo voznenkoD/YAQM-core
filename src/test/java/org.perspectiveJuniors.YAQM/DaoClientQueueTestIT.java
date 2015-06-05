@@ -2,7 +2,6 @@ package org.perspectiveJuniors.YAQM;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.perspectiveJuniors.YAQM.dao.IDaoClientQueue;
@@ -46,14 +45,10 @@ public class DaoClientQueueTestIT {
         PersonalData personalDataManager2 = new PersonalData("Manager2", "Managa2", "Man2");
         PersonalData personalDataClient1 = new PersonalData("Client1", "Clie1", "Cl1");
         PersonalData personalDataClient2 = new PersonalData("Client2", "Clie2", "Cl2");
-        Manager manager1 = new Manager();
-        Manager manager2 = new Manager();
-        Client client1 = new Client();
-        Client client2 = new Client();
-        manager1.setPersonalData(personalDataManager1);
-        manager2.setPersonalData(personalDataManager2);
-        client1.setPersonalData(personalDataClient1);
-        client1.setPersonalData(personalDataClient2);
+        Manager manager1 = new Manager(11L,personalDataManager1);
+        Manager manager2 = new Manager(12L,personalDataManager2);
+        Client client1 = new Client(21L,personalDataClient1);
+        Client client2 = new Client(22L,personalDataClient2);
         AbstractUser userM1 = daoUser.create(manager1);
         AbstractUser userM2 = daoUser.create(manager2);
         AbstractUser userC1 = daoUser.create(client1);
@@ -73,19 +68,16 @@ public class DaoClientQueueTestIT {
     }
 
     @Test
-    public void testGetAllQueuesForManager(){
+    public void testGetAllQueuesForManager() throws ClientAlreadyInQueueException{
+        //TODO
         ClientQueue clientQueue1 = new ClientQueue();
         ClientQueue clientQueue2 = new ClientQueue();
         //1 manager for 2 queues
         clientQueue1.addManager(managerId1);
         clientQueue2.addManager(managerId1);
-        try{
-            clientQueue1.addClient(clientId1);
-            clientQueue2.addClient(clientId2);
-        }
-        catch (ClientAlreadyInQueueException e){
-            System.out.println(e);
-        }
+        clientQueue1.addClient(clientId1);
+        clientQueue2.addClient(clientId2);
+
         AbstractQueue queue1 = daoClientQueue.create(clientQueue1);
         AbstractQueue queue2 = daoClientQueue.create(clientQueue2);
         List <ClientQueue> testList = new ArrayList<>();
@@ -101,19 +93,16 @@ public class DaoClientQueueTestIT {
     }
 
     @Test
-    public void TestgetAllQueuesForUser(){
+    public void TestgetAllQueuesForUser() throws ClientAlreadyInQueueException {
         ClientQueue clientQueue1 = new ClientQueue();
         ClientQueue clientQueue2 = new ClientQueue();
         clientQueue1.addManager(managerId1);
         clientQueue2.addManager(managerId2);
-        try{
-            //1 client for 2 queues
-            clientQueue1.addClient(clientId1);
-            clientQueue2.addClient(clientId1);
-        }
-        catch (ClientAlreadyInQueueException e){
-            System.out.println(e);
-        }
+
+        //1 client for 2 queues
+        clientQueue1.addClient(clientId1);
+        clientQueue2.addClient(clientId1);
+
         AbstractQueue queue1 = daoClientQueue.create(clientQueue1);
         AbstractQueue queue2 = daoClientQueue.create(clientQueue2);
         List <ClientQueue> testList = new ArrayList<>();
