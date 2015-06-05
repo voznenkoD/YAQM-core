@@ -7,6 +7,7 @@ import org.perspectiveJuniors.YAQM.dao.IDaoUser;
 import org.perspectiveJuniors.YAQM.entity.AbstractUser;
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
+import org.perspectiveJuniors.YAQM.exception.NoClientsInQueueException;
 import org.perspectiveJuniors.YAQM.exception.NotRegisteredUserException;
 import org.perspectiveJuniors.YAQM.service.IClientQueueService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class ClientQueueService implements IClientQueueService {
 
 
     @Override
-    public AbstractUser pickUpNextUserFromQueue(long queueId) {
+    public AbstractUser pickUpNextUserFromQueue(long queueId) throws NoClientsInQueueException{
         ClientQueue clientQueue = (ClientQueue) queueDao.find(queueId);
         return userDao.find(clientQueue.getNextClientId());
     }

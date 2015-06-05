@@ -4,10 +4,17 @@ import org.perspectiveJuniors.YAQM.entity.AbstractQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ClientIsNotInQueueException;
 import org.perspectiveJuniors.YAQM.exception.ManagerIsNotOperatingQueueException;
+import org.perspectiveJuniors.YAQM.exception.NoClientsInQueueException;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.*;
 
+/**
+ * Created by vsevolod, eljetto on 04.06.15.
+ */
+
+@Component
 @Entity
 @DiscriminatorValue("CLIENT_QUEUE")
 public class ClientQueue extends AbstractQueue {
@@ -54,8 +61,17 @@ public class ClientQueue extends AbstractQueue {
         }
     }
 
-    public long getNextClientId() {
-        return 0l;
+    public long getNextClientId() throws NoClientsInQueueException{
+        long clientId=-1L;
+        Iterator<Long> iterator = clientList.iterator();
+        while(iterator.hasNext()){
+            clientId = iterator.next();
+            clientList.remove(clientId);
+            break;
+        }
+        if(clientId==-1L)
+            throw new NoClientsInQueueException();
+        return clientId;
     }
 
 }
