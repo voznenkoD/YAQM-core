@@ -3,6 +3,7 @@ package org.perspectiveJuniors.YAQM.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by eljetto on 6/2/15.
  */
 @Entity
-@Table(name = "user_roles", catalog = "test",
+@Table(name = "user_roles",
         uniqueConstraints = @UniqueConstraint(
                 columnNames = { "role", "user" }))
 public class UserRole{
@@ -24,9 +25,11 @@ public class UserRole{
     @GeneratedValue(strategy = IDENTITY)
     @Column(unique = true, nullable = false)
     private long userRoleId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user", nullable = false)
     private AbstractUser user;
+
     @Column(name = "role", nullable = false, length = 45)
     private String role;
 
