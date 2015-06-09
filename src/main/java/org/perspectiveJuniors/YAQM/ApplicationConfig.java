@@ -14,13 +14,4 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @Import({ SecurityConfig.class })
 public class ApplicationConfig {
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver
-                = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/specialPages/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
 }
