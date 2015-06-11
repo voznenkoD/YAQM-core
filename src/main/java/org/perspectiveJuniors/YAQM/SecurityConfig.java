@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/client/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
                 .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
                 .antMatchers("/dummy").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin();
-
+                .and().formLogin().loginPage("/login").loginProcessingUrl("/static/j_spring_security_check").
+                failureUrl("login?login_error=t").and().csrf().disable();
     }
 }

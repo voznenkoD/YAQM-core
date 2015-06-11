@@ -2,6 +2,8 @@ package org.perspectiveJuniors.YAQM;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -10,9 +12,15 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan
-public class Application {
+public class Application extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(ApplicationConfig.class);
+    }
+
     public static void main(String[] args) {
-        ApplicationContext ctx  = SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args);
         //some code to see list of beans init
 //        String[] beanNames = ctx.getBeanDefinitionNames();
 //        Arrays.sort(beanNames);
