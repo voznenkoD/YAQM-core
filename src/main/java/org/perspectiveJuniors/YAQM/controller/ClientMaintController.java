@@ -3,6 +3,7 @@ package org.perspectiveJuniors.YAQM.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.perspectiveJuniors.YAQM.entity.impl.ClientQueue;
 import org.perspectiveJuniors.YAQM.exception.ClientAlreadyInQueueException;
@@ -13,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Created by eljetto on 5/21/15.
- */
 @RestController
 public class ClientMaintController {
 
@@ -32,5 +31,12 @@ public class ClientMaintController {
     public void registerUserInQueue(@RequestParam("userId") long userId, @RequestParam("queueId") long queueId)
             throws NotRegisteredUserException, ClientAlreadyInQueueException {
         clientQueueService.addUserToQueue(userId,queueId);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(HttpServletRequest request) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("loginPage");
+        return model;
     }
 }
