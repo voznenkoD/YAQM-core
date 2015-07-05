@@ -2,12 +2,16 @@ package org.perspectiveJuniors.YAQM.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by Всеволод on 11.04.2015.
  */
 @Entity
-@Table(name="PERSONAL_DATA")
+@Table(name="PERSONAL_DATA", uniqueConstraints = @UniqueConstraint(
+        columnNames = { "login" }))
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@JsonIgnoreProperties( {"login", "password"})
 public abstract class AbstractPersonalData {
 
     @Id
@@ -21,10 +25,11 @@ public abstract class AbstractPersonalData {
     @Column(name="SURNAME")
     private String surname;
 
+    //that's great to have login as an email, easier to send confirmation
     @Column(name="LOGIN")
     private String login;
 
-    @Column(name="PASSWORD")
+    @Column(name="PASSWORD", nullable = false)
     private String password;
 
     @OneToOne(fetch = FetchType.LAZY)

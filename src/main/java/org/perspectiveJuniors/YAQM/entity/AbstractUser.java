@@ -19,6 +19,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by Всеволод on 11.04.2015.
  */
@@ -30,6 +32,7 @@ import java.util.Set;
         name="USER_TYPE",
         discriminatorType= DiscriminatorType.STRING
 )
+@JsonIgnoreProperties( {"userRole"})
 
 public abstract class AbstractUser {
     @Id
